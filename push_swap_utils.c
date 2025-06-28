@@ -6,7 +6,7 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:19:27 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/24 11:32:40 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/26 12:39:46 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,27 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int is_digit(char **args)
+int	ft_lstsize(Node *lst)
 {
-	int i = 0;
-	int j;
-	while(args[i])
+	int	counter;
+
+	counter = 0;
+	while (lst != NULL)
 	{
-		j = 0;
-		if (args[i][j] == '+' || args[i][j] == '-')
-			j++;
-		if (args[i][j] == '\0')
-			return (0);
-		while (args[i][j])
-		{
-			if (args[i][j] < '0' || args[i][j] > '9')
-				return (0);
-			j++;
-		}
+		++counter;
+		lst = lst->next;
+	}
+	return (counter);
+}
+
+void	ft_putstr_fd(char *str, int fd)
+{
+	int i;
+	
+	i = 0;
+	while (str[i])
+	{
+		write(fd, &str[i], 1);
 		i++;
 	}
-	return (1);
 }
