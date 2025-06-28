@@ -6,7 +6,7 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:37:39 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/28 15:13:06 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/28 17:40:06 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,5 @@ int	main(int argc, char **argv)
 	// 	printf("%d ", arr[i]);
 	// }
 	indexing_list(&curr, arr, ft_lstsize(curr));
-	while(curr_3)
-	{
-		printf("%d ", curr_3->index);
-		curr_3 = curr_3->next;
-	}
-	printf("\n");
-	printf("%d\n", 42>>1);
 	free(list_a);
 }

@@ -6,7 +6,7 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:41:32 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/28 14:35:00 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/28 17:30:48 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void 			push_b(Node **stack_a, Node **stack_b);
 int				*assigning_list_arr(Node **list);
 void			bubble_sort(int *arr, int size);
 void			indexing_list(Node **list, int *arr, int size);
+int				getting_max_bits(Node **list);
 void			ft_putstr_fd(char *str, int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 11:08:08 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/28 15:09:34 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/28 17:46:06 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,35 @@ void		indexing_list(Node **list, int *arr, int size)
 	}
 }
 
+int		getting_max_bits(Node **list)
+{
+	int max = 0;
+	int bits = 0;
+	Node *curr = *list;
+
+	while(curr)
+	{
+		if (curr->index > max)
+			max = curr->index;
+		curr = curr->next;
+	}
+	while((max >> bits) != 0)
+		bits++;
+	return (bits);
+}
+
 void	radix_sort(Node **list)
 {
-	
+	int bits = getting_max_bits(list);
+	Node *curr = *list;
+	int i = 0;
+	while (curr)
+	{
+		while (i < bits)
+		{
+			if (curr->index >> i == 0)
+				push_b(curr);
+			
+		}
+	}
 }
