@@ -6,7 +6,7 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:19:27 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/26 12:39:46 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/30 16:26:48 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 long long	ft_atoi(char *nptr)
 {
-	int	i;
-	long long number;
-	int	result;
-	
+	int			i;
+	long long	number;
+	int			result;
+
 	i = 0;
 	number = 0;
 	result = 1;
@@ -27,7 +27,7 @@ long long	ft_atoi(char *nptr)
 	}
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (nptr[i]== '-')
+		if (nptr[i] == '-')
 			result *= -1;
 		i++;
 	}
@@ -55,7 +55,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	ft_lstsize(Node *lst)
+int	ft_lstsize(t_Node *lst)
 {
 	int	counter;
 
@@ -70,8 +70,8 @@ int	ft_lstsize(Node *lst)
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{

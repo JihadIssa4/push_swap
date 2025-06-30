@@ -6,104 +6,55 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 11:08:08 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/28 17:46:06 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/30 17:33:40 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		*assigning_list_arr(Node **list)
+int	getting_max_bits(t_Node **list)
 {
-	Node *curr = *list;
-	int i = 0;
-	int list_len = ft_lstsize(*list);
-	int *arr = malloc(list_len * sizeof(int));
-	if (!arr)
-		return 0;
+	int		max;
+	int		bits;
+	t_Node	*curr;
+
+	max = 0;
+	bits = 0;
+	curr = *list;
 	while (curr)
-	{
-		arr[i] = curr->data;
-		i++;
-		curr = curr->next;
-	}
-	return arr;
-}
-
-void	bubble_sort(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0 ;
-	while (i < size - 1)
-	{
-		j = 0 ;
-		while (j < size - 1 - i)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void		indexing_list(Node **list, int *arr, int size)
-{
-	int i;
-	Node *curr = *list;
-	bubble_sort(arr, size);
-	int len = ft_lstsize(curr);
-	
-	while (curr)
-	{
-		i = 0;
-		while(i < len)
-		{
-			if (curr->data == arr[i])
-			{
-				curr->index = i;
-			}
-			i++;
-		}
-		curr = curr->next;
-	}
-}
-
-int		getting_max_bits(Node **list)
-{
-	int max = 0;
-	int bits = 0;
-	Node *curr = *list;
-
-	while(curr)
 	{
 		if (curr->index > max)
 			max = curr->index;
 		curr = curr->next;
 	}
-	while((max >> bits) != 0)
+	while ((max >> bits) != 0)
 		bits++;
 	return (bits);
 }
 
-void	radix_sort(Node **list)
+void	radix_sort(t_Node **list_a, t_Node **list_b)
 {
-	int bits = getting_max_bits(list);
-	Node *curr = *list;
-	int i = 0;
-	while (curr)
+	int	bits;
+	int	size;
+	int	i;
+	int	j;
+
+	bits = getting_max_bits(list_a);
+	size = ft_lstsize(*list_a);
+	i = 0;
+	while (i < bits)
 	{
-		while (i < bits)
+		j = 0;
+		while (j < size)
 		{
-			if (curr->index >> i == 0)
-				push_b(curr);
-			
+			if (((*list_a)->index >> i) & 1)
+				rotate_a(list_a);
+			else
+				push_b(list_a, list_b);
+			j++;
 		}
+		while (*list_b)
+			push_a(list_a, list_b);
+		i++;
 	}
 }

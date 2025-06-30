@@ -6,26 +6,43 @@
 /*   By: jissa <jissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:36:15 by jissa             #+#    #+#             */
-/*   Updated: 2025/06/26 10:57:08 by jissa            ###   ########.fr       */
+/*   Updated: 2025/06/30 16:56:16 by jissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-Node	*create_list(char **args, int args_count)
+t_Node	*create_list(char **args, int args_count)
 {
-	Node *new_Node;
-	Node *tail_Node = NULL;
-	int i = args_count - 1;
+	t_Node	*new_node;
+	t_Node	*tail_node;
+	int		i;
+
+	tail_node = NULL;
+	i = args_count - 1;
 	while (i >= 0)
 	{
-		new_Node = malloc(sizeof(Node));
-		if (!new_Node)
+		new_node = malloc(sizeof(t_Node));
+		if (!new_node)
 			return (NULL);
-		new_Node->data = ft_atoi(args[i]);
-		new_Node->next = tail_Node;
-		tail_Node = new_Node;
+		new_node->data = ft_atoi(args[i]);
+		new_node->next = tail_node;
+		tail_node = new_node;
 		i--;
 	}
-	return tail_Node;
+	return (tail_node);
+}
+
+int	a_is_sorted(t_Node **list)
+{
+	t_Node	*curr;
+
+	curr = *list;
+	while (curr && curr->next)
+	{
+		if (curr->data > curr->next->data)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
 }
